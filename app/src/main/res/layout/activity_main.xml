@@ -195,7 +195,7 @@
                         android:layout_marginLeft="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="10"
+                        android:text="15"
                         android:textSize="20dp"
                         android:textColor="@android:color/white">
                     </TextView>
@@ -276,7 +276,7 @@
                         android:layout_marginLeft="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="20"
+                        android:text="30"
                         android:textSize="20dp"
                         android:textColor="@android:color/white">
                     </TextView>
@@ -354,7 +354,7 @@
                         android:layout_marginLeft="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="20"
+                        android:text="10"
                         android:textSize="20dp"
                         android:textColor="@android:color/white">
                     </TextView>
@@ -436,7 +436,7 @@
                         android:layout_marginLeft="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="20"
+                        android:text="50"
                         android:textSize="20dp"
                         android:textColor="@android:color/white">
                     </TextView>
@@ -514,7 +514,7 @@
                         android:layout_marginLeft="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="20"
+                        android:text="5"
                         android:textSize="20dp"
                         android:textColor="@android:color/white">
                     </TextView>
@@ -591,7 +591,7 @@
                         android:layout_marginLeft="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="20"
+                        android:text="5"
                         android:textSize="20dp"
                         android:textColor="@android:color/white">
                     </TextView>
@@ -675,7 +675,7 @@
                         android:layout_marginLeft="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="20"
+                        android:text="2"
                         android:textSize="20dp"
                         android:textColor="@android:color/white">
                     </TextView>

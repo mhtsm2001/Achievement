@@ -505,6 +505,55 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        Button bu_mhm9 = findViewById(R.id.bu_mhm9);
+
+        sh = getSharedPreferences("save",Context.MODE_PRIVATE);
+
+
+
+
+
+        bu_mhm9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                int geld_te = Integer.parseInt(geld.getText().toString());
+                int geld_va = Integer.parseInt(mhm9ge.getText().toString());
+                int re = geld_te + geld_va;
+
+                geld.setText(String.valueOf(re));
+
+
+                SharedPreferences.Editor myedit=sh.edit();
+                myedit.putString(date + "mhm9", "yes".toString());
+                myedit.putString("geld", geld.getText().toString());
+
+                myedit.commit();
+
+                mhm9.setVisibility(View.GONE);
+
+            }
+            TextView geld = findViewById(R.id.geld);
+            LinearLayout mhm9 = findViewById(R.id.mhm9);
+            TextView mhm9ge = findViewById(R.id.mhm9ge);
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

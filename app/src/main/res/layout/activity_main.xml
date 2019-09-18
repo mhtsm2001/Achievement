@@ -726,6 +726,78 @@
 
 
 
+            // mhm 9
+
+
+
+            <LinearLayout
+                android:id="@+id/mhm9"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/lin_back"
+                android:gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.06"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="432dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/mhm9ge"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="40"
+                        android:textSize="20dp"
+                        android:textColor="@android:color/white">
+                    </TextView>
+
+
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/geld">
+                    </ImageView>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="1in"
+                    android:text="أصلي صلاة الصبح"
+                    android:gravity="center"
+                    android:textColor="#ffff"
+                    android:textSize="20dp"
+                    tools:layout_editor_absoluteX="46dp"
+                    tools:layout_editor_absoluteY="">
+                </TextView>
+
+                <Button
+                    android:id="@+id/bu_mhm9"
+                    android:layout_width="95dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/claim_bu"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="Claim"
+                    android:textColor="@android:color/white"
+                    android:textSize="17dp"
+                    android:textStyle="italic">
+                </Button>
+            </LinearLayout>
+
+
 
 
 

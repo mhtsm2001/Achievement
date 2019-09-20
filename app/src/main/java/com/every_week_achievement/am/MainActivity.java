@@ -63,7 +63,9 @@ public class MainActivity extends AppCompatActivity {
         int month = cal.get(Calendar.MONTH);
         final int day = cal.get(Calendar.DAY_OF_MONTH);
 
-        final String date_tv = day + "/" + month + "/" + year;
+       final int monthF = month + 1;
+
+        final String date_tv = day + "/" + monthF + "/" + year;
         the_date.setText(date_tv);
 
 
@@ -166,7 +168,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
             Log.d(Tag, "onDateSet: date: " + year + "/" + month + "/" + dayOfMonth);
-            String date_tv = dayOfMonth + "/" + month + "/" + year;
+
+            int monthFF = month + 1;
+
+            String date_tv = dayOfMonth + "/" + monthFF + "/" + year;
             the_date.setText(date_tv);
 
 

@@ -2,12 +2,20 @@ package com.every_week_achievement.am;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ClipDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.ColorStateListDrawable;
 import android.os.Bundle;
+import android.provider.CalendarContract;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -17,6 +25,10 @@ import java.util.IllegalFormatCodePointException;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String Tag = "MainActivity";
+
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
+
     SharedPreferences sh;
 
     @Override
@@ -24,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        final TextView the_date = findViewById(R.id.date);
         Button bu_mhm1 = findViewById(R.id.bu_mhm1);
 
         LinearLayout mhm1 = findViewById(R.id.mhm1);
@@ -34,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout mhm6 = findViewById(R.id.mhm6);
         LinearLayout mhm7 = findViewById(R.id.mhm7);
         LinearLayout mhm8 = findViewById(R.id.mhm8);
+        LinearLayout mhm9 = findViewById(R.id.mhm9);
 
 
 
@@ -44,10 +59,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         Calendar cal = Calendar.getInstance();
-        final String date = DateFormat.getDateInstance().format(cal.getTime());
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        final int day = cal.get(Calendar.DAY_OF_MONTH);
 
-
-
+        final String date_tv = day + "/" + month + "/" + year;
+        the_date.setText(date_tv);
 
 
         sh = getSharedPreferences("save",Context.MODE_PRIVATE);
@@ -69,52 +86,58 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        if ( sh.getString(date + "mhm1", "no").equals("yes")) {
+        if ( sh.getString(the_date.getText().toString() + "mhm1", "no").equals("yes")) {
             mhm1.setVisibility(View.GONE);
         }else {
             mhm1.setVisibility(View.VISIBLE);
         }
 
-        if ( sh.getString(date + "mhm2", "no").equals("yes")) {
+        if ( sh.getString(the_date.getText().toString() + "mhm2", "no").equals("yes")) {
             mhm2.setVisibility(View.GONE);
         }else {
             mhm2.setVisibility(View.VISIBLE);
         }
 
-        if ( sh.getString(date + "mhm3", "no").equals("yes")) {
+        if ( sh.getString(the_date.getText().toString() + "mhm3", "no").equals("yes")) {
             mhm3.setVisibility(View.GONE);
         }else {
             mhm3.setVisibility(View.VISIBLE);
         }
 
-        if ( sh.getString(date + "mhm4", "no").equals("yes")) {
+        if ( sh.getString(the_date.getText().toString() + "mhm4", "no").equals("yes")) {
             mhm4.setVisibility(View.GONE);
         }else {
             mhm4.setVisibility(View.VISIBLE);
         }
 
-        if ( sh.getString(date + "mhm5", "no").equals("yes")) {
+        if ( sh.getString(the_date.getText().toString() + "mhm5", "no").equals("yes")) {
             mhm5.setVisibility(View.GONE);
         }else {
             mhm5.setVisibility(View.VISIBLE);
         }
 
-        if ( sh.getString(date + "mhm6", "no").equals("yes")) {
+        if ( sh.getString(the_date.getText().toString() + "mhm6", "no").equals("yes")) {
             mhm6.setVisibility(View.GONE);
         }else {
             mhm6.setVisibility(View.VISIBLE);
         }
 
-        if ( sh.getString(date + "mhm7", "no").equals("yes")) {
+        if ( sh.getString(the_date.getText().toString() + "mhm7", "no").equals("yes")) {
             mhm7.setVisibility(View.GONE);
         }else {
             mhm7.setVisibility(View.VISIBLE);
         }
 
-        if ( sh.getString(date + "mhm8", "no").equals("yes")) {
+        if ( sh.getString(the_date.getText().toString() + "mhm8", "no").equals("yes")) {
             mhm8.setVisibility(View.GONE);
         }else {
             mhm8.setVisibility(View.VISIBLE);
+        }
+
+        if ( sh.getString(the_date.getText().toString() + "mhm9", "no").equals("yes")) {
+            mhm9.setVisibility(View.GONE);
+        }else {
+            mhm9.setVisibility(View.VISIBLE);
         }
 
 
@@ -123,6 +146,103 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        the_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar cal1 = Calendar.getInstance();
+                int year = cal1.get(Calendar.YEAR);
+                int month = cal1.get(Calendar.MONTH);
+                int day = cal1.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(MainActivity.this, android.R.style.Theme_DeviceDefault_Light_Dialog, mDateSetListener, year, month, day);
+
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+                dialog.show();
+
+            }
+        });
+
+    mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+            Log.d(Tag, "onDateSet: date: " + year + "/" + month + "/" + dayOfMonth);
+            String date_tv = dayOfMonth + "/" + month + "/" + year;
+            the_date.setText(date_tv);
+
+
+
+            LinearLayout mhm1 = findViewById(R.id.mhm1);
+            LinearLayout mhm2 = findViewById(R.id.mhm2);
+            LinearLayout mhm3 = findViewById(R.id.mhm3);
+            LinearLayout mhm4 = findViewById(R.id.mhm4);
+            LinearLayout mhm5 = findViewById(R.id.mhm5);
+            LinearLayout mhm6 = findViewById(R.id.mhm6);
+            LinearLayout mhm7 = findViewById(R.id.mhm7);
+            LinearLayout mhm8 = findViewById(R.id.mhm8);
+            LinearLayout mhm9 = findViewById(R.id.mhm9);
+
+            if ( sh.getString(the_date.getText().toString() + "mhm1", "no").equals("yes")) {
+                mhm1.setVisibility(View.GONE);
+            }else {
+                mhm1.setVisibility(View.VISIBLE);
+            }
+
+            if ( sh.getString(the_date.getText().toString() + "mhm2", "no").equals("yes")) {
+                mhm2.setVisibility(View.GONE);
+            }else {
+                mhm2.setVisibility(View.VISIBLE);
+            }
+
+            if ( sh.getString(the_date.getText().toString() + "mhm3", "no").equals("yes")) {
+                mhm3.setVisibility(View.GONE);
+            }else {
+                mhm3.setVisibility(View.VISIBLE);
+            }
+
+            if ( sh.getString(the_date.getText().toString() + "mhm4", "no").equals("yes")) {
+                mhm4.setVisibility(View.GONE);
+            }else {
+                mhm4.setVisibility(View.VISIBLE);
+            }
+
+            if ( sh.getString(the_date.getText().toString() + "mhm5", "no").equals("yes")) {
+                mhm5.setVisibility(View.GONE);
+            }else {
+                mhm5.setVisibility(View.VISIBLE);
+            }
+
+            if ( sh.getString(the_date.getText().toString() + "mhm6", "no").equals("yes")) {
+                mhm6.setVisibility(View.GONE);
+            }else {
+                mhm6.setVisibility(View.VISIBLE);
+            }
+
+            if ( sh.getString(the_date.getText().toString() + "mhm7", "no").equals("yes")) {
+                mhm7.setVisibility(View.GONE);
+            }else {
+                mhm7.setVisibility(View.VISIBLE);
+            }
+
+            if ( sh.getString(the_date.getText().toString() + "mhm8", "no").equals("yes")) {
+                mhm8.setVisibility(View.GONE);
+            }else {
+                mhm8.setVisibility(View.VISIBLE);
+            }
+
+            if ( sh.getString(the_date.getText().toString() + "mhm9", "no").equals("yes")) {
+                mhm9.setVisibility(View.GONE);
+            }else {
+                mhm9.setVisibility(View.VISIBLE);
+            }
+
+
+
+
+
+
+
+        }
+    };
 
 
 
@@ -138,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 SharedPreferences.Editor myedit=sh.edit();
-                myedit.putString(date + "mhm1", "yes".toString());
+                myedit.putString(the_date.getText().toString() + "mhm1", "yes".toString());
                 myedit.putString("geld", geld.getText().toString());
 
                 myedit.commit();
@@ -180,7 +300,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 SharedPreferences.Editor myedit=sh.edit();
-                myedit.putString(date + "mhm2", "yes".toString());
+                myedit.putString(the_date.getText().toString() + "mhm2", "yes".toString());
                 myedit.putString("geld", geld.getText().toString());
 
                 myedit.commit();
@@ -219,7 +339,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 SharedPreferences.Editor myedit=sh.edit();
-                myedit.putString(date + "mhm3", "yes".toString());
+                myedit.putString(the_date.getText().toString() + "mhm3", "yes".toString());
                 myedit.putString("geld", geld.getText().toString());
 
                 myedit.commit();
@@ -275,7 +395,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 SharedPreferences.Editor myedit=sh.edit();
-                myedit.putString(date + "mhm4", "yes".toString());
+                myedit.putString(the_date.getText().toString() + "mhm4", "yes".toString());
                 myedit.putString("geld", geld.getText().toString());
 
                 myedit.commit();
@@ -326,7 +446,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 SharedPreferences.Editor myedit=sh.edit();
-                myedit.putString(date + "mhm5", "yes".toString());
+                myedit.putString(the_date.getText().toString() + "mhm5", "yes".toString());
                 myedit.putString("geld", geld.getText().toString());
 
                 myedit.commit();
@@ -378,7 +498,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 SharedPreferences.Editor myedit=sh.edit();
-                myedit.putString(date + "mhm6", "yes".toString());
+                myedit.putString(the_date.getText().toString() + "mhm6", "yes".toString());
                 myedit.putString("geld", geld.getText().toString());
 
                 myedit.commit();
@@ -426,7 +546,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 SharedPreferences.Editor myedit=sh.edit();
-                myedit.putString(date + "mhm7", "yes".toString());
+                myedit.putString(the_date.getText().toString() + "mhm7", "yes".toString());
                 myedit.putString("geld", geld.getText().toString());
 
                 myedit.commit();
@@ -477,7 +597,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 SharedPreferences.Editor myedit=sh.edit();
-                myedit.putString(date + "mhm8", "yes".toString());
+                myedit.putString(the_date.getText().toString() + "mhm8", "yes".toString());
                 myedit.putString("geld", geld.getText().toString());
 
                 myedit.commit();
@@ -526,7 +646,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 SharedPreferences.Editor myedit=sh.edit();
-                myedit.putString(date + "mhm9", "yes".toString());
+                myedit.putString(the_date.getText().toString() + "mhm9", "yes".toString());
                 myedit.putString("geld", geld.getText().toString());
 
                 myedit.commit();

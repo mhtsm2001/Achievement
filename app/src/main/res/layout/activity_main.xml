@@ -16,7 +16,20 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="The Date Of Today"
+            android:textSize="25dp">
+
+        </TextView>
+
+
 
         <LinearLayout
             android:layout_width="180dp"
@@ -34,11 +47,18 @@
             android:textStyle="bold"
             android:textColor="#554900"
             android:layout_gravity="center">
+
+
+
         </TextView>
 
 
 
         </LinearLayout>
+
+
+
+
     </LinearLayout>
 
     <ScrollView

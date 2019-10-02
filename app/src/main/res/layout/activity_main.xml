@@ -22,7 +22,10 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="20dp">
 
 
 
@@ -31,17 +34,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="The Date Of Today"
-            android:textSize="25dp"
-            android:layout_marginRight="20dp">
+            android:textSize="25dp">
 
         </TextView>
 
 
         <ImageView
             android:id="@+id/reload"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/reload">
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/reload"
+            android:layout_marginTop="20dp">
 
         </ImageView>
 
